@@ -32,3 +32,8 @@
     * I'm glad I did this, as it was nice to see the complete shape of the cone.
 * Finally I cleaned up my code, refined function names, put all my functions into a .py file that I run at the start of my notebook, created this markdown file for all my notes, and refined my notebook summary.
 * Sometime next week I will push my folder with all my stuff from this rotation to GitHub for Mike to use when I pass the torch to him. I will also make my rotation presentation and include it in the folder for Mike or whoever else to use in the future.
+
+### Notes on 09/03/2024:
+* Finished my PPT Presentation for the Rotation Project, if you would like a copy of the presentation please feel free to e-mail me at Ounsinegad@wisc.edu
+* After everything was completed I created a repository for this project and uploaded my code and associated files for future use by any students, faculty, or staff who may work on this project, including Daniel. The link to the GitHub repository is https://github.com/Aurodexdis/ConeCollapseNMF
+  

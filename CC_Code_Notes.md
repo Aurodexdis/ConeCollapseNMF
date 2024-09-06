@@ -36,4 +36,8 @@
 ### Notes on 09/03/2024:
 * Finished my PPT Presentation for the Rotation Project, if you would like a copy of the presentation please feel free to e-mail me at Ounsinegad@wisc.edu
 * After everything was completed I created a repository for this project and uploaded my code and associated files for future use by any students, faculty, or staff who may work on this project, including Daniel. The link to the GitHub repository is https://github.com/Aurodexdis/ConeCollapseNMF
-  
+
+### Notes on 09/06/2024:
+* After meeting w/ Daniel and Mike, Daniel told me that mu was supposed to be the center of the data, not the center of the nonnegative orthant, this was a mistake on my end. This was an easy fix though, I went in and changed where mu was calculated in each function and how it was plotted and then reran the main code to get new plots for my rotation presentation.
+* Refined my PPT Presentation for the Rotation Project with the new edits.
+* After everything was completed I pushed my new code and notes to the GitHub repo.

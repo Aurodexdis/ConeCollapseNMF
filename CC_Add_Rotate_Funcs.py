@@ -173,9 +173,9 @@ def plot_cone_points_and_bounds(U, X, title):
     # Determine the maximum extent of the data
     max_extent = max(np.max(X), np.max(U)) * 1.2  # Extend 20% beyond the data
 
-    # Calculate mu (center of the nonnegative orthant)
-    m = X.shape[0]  # number of dimensions
-    mu = np.ones(m) / np.sqrt(m)
+    # Calculate mu (vector to the center of the data)
+    data_center = np.mean(X, axis=1)
+    mu = data_center / np.linalg.norm(data_center)  # Normalize to make it a unit vector
     mu_extended = mu * max_extent  # Extend mu to the edge of the plot
 
     # Plot the mu vector
@@ -185,7 +185,7 @@ def plot_cone_points_and_bounds(U, X, title):
         z=[0, mu_extended[2]],
         mode='lines',
         line=dict(color='green', width=3),
-        name='μ (center of nonnegative orthant)'
+        name='μ (direction to data center)'
     ))
 
     # Plot the cone vectors
@@ -304,8 +304,9 @@ def cc_add(U, X, k, theta, max_iterations=1000):
     update_index = 0
     new_vectors_added = 0
 
-    # Define mu as the center of the nonnegative orthant
-    mu = np.ones(m) / np.sqrt(m)
+    # Define mu as the vector to the center of the data
+    data_center = np.mean(X, axis=1)
+    mu = data_center / np.linalg.norm(data_center)
 
     while new_vectors_added < k and iteration < max_iterations:
         iteration += 1
@@ -346,8 +347,9 @@ def cc_rotate(U, X, theta, initial_rotation_angle, max_iterations=1000, max_rota
     update_index = 0
     rotation_angle = initial_rotation_angle
 
-    # Define mu as the center of the nonnegative orthant
-    mu = np.ones(m) / np.sqrt(m)
+    # Define mu as the vector to the center of the data
+    data_center = np.mean(X, axis=1)
+    mu = data_center / np.linalg.norm(data_center)
 
     # For tracking convergence
     previous_U = U.copy()
@@ -434,10 +436,13 @@ def cc_rotation_animation(X, animation_frames, output_filename='enhanced_cone_ro
     fig = plt.figure(figsize=(12, 10))
     ax = fig.add_subplot(111, projection='3d')
 
-    # Calculate mu (center of the nonnegative orthant)
-    m = X.shape[0]  # number of dimensions
-    mu = np.ones(m) / np.sqrt(m)
+    # Calculate mu (vector to the center of the data)
+    data_center = np.mean(X, axis=1)
+    mu = data_center / np.linalg.norm(data_center)
     mu_extended = mu * max_val  # Extend mu to the edge of the plot
+
+    # Plot mu as a green line
+    ax.plot([0, mu_extended[0]], [0, mu_extended[1]], [0, mu_extended[2]], 'g-', linewidth=2, label='μ')
 
     for i, (U, rotation_iter, rotation_angle, points_outside, overall_iteration) in enumerate(animation_frames):
         if i % frame_skip != 0:
@@ -590,8 +595,9 @@ def cc_rotate_dist(U, X, initial_max_step_size, initial_rotation_angle, max_iter
     rotation_angle = initial_rotation_angle
     max_step_size = initial_max_step_size
 
-    # Define mu as the center of the nonnegative orthant
-    mu = np.ones(m) / np.sqrt(m)
+    # Define mu as the vector to the center of the data
+    data_center = np.mean(X, axis=1)
+    mu = data_center / np.linalg.norm(data_center)
 
     previous_U = U.copy()
     animation_frames = []
